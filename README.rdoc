@@ -1,3 +1,27 @@
 = MercatorBechlem
 
-This project rocks and uses MIT-LICENSE.
+ MercatorMesonic provides Bechlem Crossselling Integration for the Mesonic Guided Selling Application.
+
+
+This project uses the GPL V3 license. See file LICENSE in the same directory for details about the GPL V3.
+
+# Installation instructions
+
+1. Put in your Gemfile
+'''ruby
+gem "mercator_bechlem"
+'''
+2. Instell gem by running
+'''ruby
+bundle install
+'''
+3.2 Get all migrations into your app by running in your app directory
+'''ruby
+rake mercator_mesonic:install:migrations
+'''
+4. Run Migrations added
+'''ruby
+rake db:migrate
+'''
+5. Mount the Engine in your routes.rb
+mount MercatorMesonic::Engine => "/mercator_mesonic"
