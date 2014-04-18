@@ -1,7 +1,7 @@
 module MercatorBechlem
   class Vqualifier < Base
 
-    self.table_name = "vqualifier"
+    self.table_name = "VQUALIFIER"
 
     # --- Instance Methods --- #
     def readonly?  # prevents unintentional changes
