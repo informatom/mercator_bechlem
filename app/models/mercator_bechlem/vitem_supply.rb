@@ -4,12 +4,9 @@ module MercatorBechlem
     self.table_name = "VITEM_SUPPLY"
     self.primary_key = "IDITEM"
 
-    def self.for_category_id( brand, category_id )
+    def self.for_category_id(category_id )
       cat_id = category_id.to_s.gsub("0", "")
-      self.find_by_sql [
-      "select * from VITEM_SUPPLY where idCategory like ?
-        and brand=? order by artnr", "#{cat_id}%", brand
-      ]
+      self.where(brand: "HP").where("idCategory like ?", "#{cat_id}%").order(artnr: :asc)
     end
 
     # --- Instance Methods --- #
