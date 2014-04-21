@@ -1,0 +1,19 @@
+<page title="Consumables">
+
+  <body: class="consumable-page"/>
+  <content:>
+    <header class="content-header hero-unit">
+      <h1>Drucker Verbrauchsmaterialien</h1>
+      <section class="welcome-message">
+        <h3>Kategories</h3>
+        <ul>
+          <li>Verwenden Sie die Links im Menü zur Navigation</li>
+        </ul>
+      </section>
+    </header>
+
+    <section class="content-body">
+    dumdidum
+    </section>
+  </content:>
+</page>
