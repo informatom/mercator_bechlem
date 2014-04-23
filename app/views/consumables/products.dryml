@@ -1,0 +1,33 @@
+<page title="Home">
+
+  <body: class="front-page"/>
+
+  <content:>
+    <header class="content-header">
+      <if test="&@printer_description">
+        <h1>Verbrauchsmaterialien <view with="&@printer_description" /></h1>
+      </if>
+      <else>
+        <h2>Kein Produkt mit dieser Bezeichnung gefunden</h2>
+      </else>
+    </header>
+
+    <section class="content-body">
+      <if test="&@active_products">
+        <%= @active_products.in_groups_of(2) do |group| %>
+          <div class="row-fluid">
+              <div repeat="&group" class="span6">
+                <if><card/></if>
+              </div>
+          </div>
+        <% end %>
+      </if>
+      <else>
+        <p>keine Produkte lieferbar</p>
+      </else>
+    </section>
+
+    <p><a href="/consumables" class ="btn btn-primary">Zur Suche</a></p>
+  </content:>
+
+</page>

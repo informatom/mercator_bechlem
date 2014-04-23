@@ -1,0 +1,45 @@
+<page title="Home">
+
+  <body: class="front-page"/>
+
+  <content:>
+    <header class="content-header">
+      <h1>Verbrauchsmaterialien HP Drucker</h1>
+    </header>
+
+    <section class="content-body">
+      <p>Hier können Sie nach Verbrauchmaterialien für Ihre Drucker suchen. Wählen Sie eine Druckerserie und / oder
+      geben Sie einige Buchstaben der Bezeichnung Ihres HP-Druckers ein</p>
+
+      <h2>Druckerserien</h2>
+      <p> <if test="&@printerserie != 'All' "> <a href="/consumables/">Filter aufheben</a></if> </p>
+
+      <p>
+        <repeat with="&@printer_series_names">
+          <if test="&@printerserie == this"> <view with="&this" /> </if>
+          <else> <a href="/consumables/#{u this}/printers"><view/></a> </else>
+          <%= last_item? ? "" : " - "%>
+        </repeat>
+      </p>
+
+      <if test="&@printers">
+        <h2>Drucker</h2>
+      </if>
+
+      <form action="/consumables/products" method="post">
+        <h3>Bezeichnung</h3>
+        <autocomplete:printer name="printer" with="&MercatorBechlem::VitemPrinter.new()" source="&@printer_names"/>
+        <submit label="Suchen"/>
+      </form>
+
+      <p>
+      <repeat with="&@printers">
+        <span class="underline"><a href="/consumables/#{this.IDITEM}/products"><view:DESCRIPTION /></a></span>
+        <%= last_item? ? "" : " - "%>
+      </repeat>
+      </p>
+
+    </section>
+  </content:>
+
+</page>

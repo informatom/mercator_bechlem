@@ -1,0 +1,52 @@
+<page title="Home">
+
+  <body: class="front-page"/>
+
+  <content:>
+    <header class="content-header">
+      <p>
+        <if test="&@category"> Sie befinden sich hier:
+          <repeat with="&@ancestors">
+            <a href="/consumables/#{this.IDCATEGORY}/category"><view:DESCRIPTION/></a> /
+          </repeat>
+          <view with="&@category.DESCRIPTION"/>
+        </if>
+      </p>
+      <if test="&@category">
+        <h1>Verbrauchsmaterialien in der Kategorie <view with="&@category.DESCRIPTION"/></h1>
+      </if>
+      <else>
+        <h1>Verbrauchsmaterialien aller Kategorien</h1>
+      </else>
+    </header>
+
+    <section class="content-body">
+      <p>
+        <if test="&@children"> Sie befinden sich hier:Unterkategorien:
+          <repeat with="&@children">
+            <a href="/consumables/#{this.IDCATEGORY}/category"><view:DESCRIPTION/></a>
+            <%= last_item? ? "" : " - " %>
+          </repeat>
+        </if>
+      </p>
+
+      <if test="&@active_products">
+        <%= @active_products.in_groups_of(2) do |group| %>
+          <div class="row-fluid">
+              <div repeat="&group" class="span6">
+                <if><card/></if>
+              </div>
+          </div>
+        <% end %>
+      </if>
+      <else>
+        <if test="&@category.parent">
+          <p>keine Produkte lieferbar</p>
+        </if>
+        <else>
+          <p>Bitte wählen Sie eine Kategorie</p>
+        </else>
+      </else>
+    </section>
+  </content:>
+</page>
