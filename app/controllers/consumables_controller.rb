@@ -32,7 +32,8 @@ class ConsumablesController < ApplicationController
   end
 
   def category
-    @category = MercatorBechlem::Vcategory.where(IDCATEGORY: params[:id]).first
+    category_id = (params[:id] == "All") ? "145200000" : params[:id]
+    @category = MercatorBechlem::Vcategory.where(IDCATEGORY: category_id).first
     @ancestors = try_to { @category.ancestors }
     @children = @category ? @category.children : MercatorBechlem::Vcategory.ivellio_top_categories
 

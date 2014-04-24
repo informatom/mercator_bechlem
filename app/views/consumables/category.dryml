@@ -22,7 +22,7 @@
 
     <section class="content-body">
       <p>
-        <if test="&@children"> Sie befinden sich hier:Unterkategorien:
+        <if test="&@children">Unterkategorien:
           <repeat with="&@children">
             <a href="/consumables/#{this.IDCATEGORY}/category"><view:DESCRIPTION/></a>
             <%= last_item? ? "" : " - " %>

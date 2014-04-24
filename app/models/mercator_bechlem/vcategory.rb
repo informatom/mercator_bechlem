@@ -11,7 +11,7 @@ module MercatorBechlem
     def parent
       cat_id = self.IDCATEGORY.to_s
       parent_idCategory = cat_id[0..(9 - (cat_id.count("0") + 2))].ljust(9, '0')
-      if ["145200000", "145000000"].include?(parent_idCategory)
+      if parent_idCategory == "145200000"
         return nil
       else
         return Vcategory.find(parent_idCategory)
