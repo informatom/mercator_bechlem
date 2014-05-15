@@ -39,6 +39,5 @@ module MercatorBechlem
         FileUtils.mv(filename.to_s + ".tmp", filename)
       end
     end
-
   end
 end

@@ -19,14 +19,22 @@ class ConsumablesController < ApplicationController
   def printers
     @printerserie = params[:id]
 
-    @printer_series = MercatorBechlem::VitemPrinter.where(brand: "HP").where.not(printerseries: nil).order(PRINTERSERIES: :asc)
+    @printer_series = MercatorBechlem::VitemPrinter.where(brand: "HP")
+                                                   .where.not(printerseries: nil)
+                                                   .order(PRINTERSERIES: :asc)
     @printer_series_names = @printer_series.*.PRINTERSERIES.uniq
 
     if @printerserie == "All"
-      @printer_names = MercatorBechlem::VitemPrinter.where(brand: "HP").order(DESCRIPTION: :asc).*.DESCRIPTION.uniq
+      @printer_names = MercatorBechlem::VitemPrinter.where(brand: "HP")
+                                                    .order(DESCRIPTION: :asc).*
+                                                    .DESCRIPTION
+                                                    .uniq
     else
-      @printer_names = MercatorBechlem::VitemPrinter.where(brand: "HP", printerseries: @printerserie).order(DESCRIPTION: :asc).*.DESCRIPTION.uniq
-      @printers = MercatorBechlem::VitemPrinter.where(brand: "HP", printerseries: @printerserie).select("CATEGORY, BRAND, DESCRIPTION, IDITEM")
+      @printer_names = MercatorBechlem::VitemPrinter.where(brand: "HP", printerseries: @printerserie)
+                                                    .order(DESCRIPTION: :asc).*
+                                                    .DESCRIPTION.uniq
+      @printers = MercatorBechlem::VitemPrinter.where(brand: "HP", printerseries: @printerserie)
+                                               .select("CATEGORY, BRAND, DESCRIPTION, IDITEM")
                                                .order(DESCRIPTION: :asc)
     end
   end
@@ -40,8 +48,11 @@ class ConsumablesController < ApplicationController
     @printers = MercatorBechlem::VitemSupply.for_category_id(params[:id])
 
     if @printers && @category && @category.parent
-      printer_alternative_numbers = @printers.collect { |printer| "#{printer.ARTNR.gsub("\s", '')}" }.uniq
-      @products = Inventory.where(alternative_number: printer_alternative_numbers).*.product.uniq
+      printer_alternative_numbers = @printers.collect { |printer| "#{printer.ARTNR.gsub("\s", '')}" }
+                                             .uniq
+      @products = Inventory.where(alternative_number: printer_alternative_numbers).*
+                           .product
+                           .uniq
       @active_products = @products.find_all{|product| product.state == "active" }
     end
   end
