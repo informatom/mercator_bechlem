@@ -4,42 +4,68 @@
 
   <content:>
     <header class="content-header">
-      <h1>Verbrauchsmaterialien HP Drucker</h1>
+      <h1>
+        <t key="mercator.consumeables" /> HP <t key="mercator.printer" />
+      </h1>
     </header>
 
     <section class="content-body">
-      <p>Hier können Sie nach Verbrauchmaterialien für Ihre Drucker suchen. Wählen Sie eine Druckerserie und / oder
-      geben Sie einige Buchstaben der Bezeichnung Ihres HP-Druckers ein</p>
+      <p>
+        <t key="mercator.consumeable_search_help" />
+      </p>
 
-      <h2>Druckerserien</h2>
-      <p> <if test="&@printerserie != 'All' "> <a href="/consumables/">Filter aufheben</a></if> </p>
+      <h2><t key="mercator.printer_series" /></h2>
+      <p>
+        <if test="&@printerserie != 'All' ">
+          <a href="/consumables/">
+            <t key="mercator.remove_filter" />
+          </a>
+        </if>
+      </p>
 
       <p>
         <repeat with="&@printer_series_names">
-          <if test="&@printerserie == this"> <view with="&this" /> </if>
-          <else> <a href="/consumables/#{u this}/printers"><view/></a> </else>
+          <if test="&@printerserie == this">
+            <view with="&this" />
+          </if>
+          <else>
+            <a href="/consumables/#{u this}/printers">
+              <view/>
+            </a>
+          </else>
+
           <%= last_item? ? "" : " - "%>
         </repeat>
       </p>
 
       <if test="&@printers">
-        <h2>Drucker</h2>
+        <h2>
+          <t key="mercator.printer" />
+        </h2>
       </if>
 
       <form action="/consumables/products" method="post">
-        <h3>Bezeichnung</h3>
-        <autocomplete:printer name="printer" with="&MercatorBechlem::VitemPrinter.new()" source="&@printer_names"/>
-        <submit label="Suchen"/>
+        <h3>
+          <t key="mercator.identifier" />
+        </h3>
+        <autocomplete:printer name="printer"
+                              with="&MercatorBechlem::VitemPrinter.new()"
+                              source="&@printer_names"/>
+        <submit label="&t(hobo.live_search.label)"/>
       </form>
 
       <p>
-      <repeat with="&@printers">
-        <span class="underline"><a href="/consumables/#{this.IDITEM}/products"><view:DESCRIPTION /></a></span>
-        <%= last_item? ? "" : " - "%>
-      </repeat>
-      </p>
 
+        <repeat with="&@printers">
+          <span class="underline">
+            <a href="/consumables/#{this.IDITEM}/products">
+              <view:DESCRIPTION />
+            </a>
+          </span>
+          <%= last_item? ? "" : " - "%>
+        </repeat>
+
+      </p>
     </section>
   </content:>
-
 </page>

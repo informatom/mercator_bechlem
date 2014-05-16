@@ -5,7 +5,7 @@
   <content:>
     <header class="content-header">
       <p>
-        <if test="&@category"> Sie befinden sich hier:
+        <if test="&@category"> <t key="mercator.you_are_here" />:
           <repeat with="&@ancestors">
             <a href="/consumables/#{this.IDCATEGORY}/category"><view:DESCRIPTION/></a> /
           </repeat>
@@ -13,16 +13,23 @@
         </if>
       </p>
       <if test="&@category">
-        <h1>Verbrauchsmaterialien in der Kategorie <view with="&@category.DESCRIPTION"/></h1>
+        <h1>
+          <t key="mercator.consumeables" />
+          <t key="mercator.in_the_category" />
+          <view with="&@category.DESCRIPTION"/>
+        </h1>
       </if>
       <else>
-        <h1>Verbrauchsmaterialien aller Kategorien</h1>
+        <h1>
+          <t key="mercator.consumeables" />
+          <t key="mercator.in_all_categories" />
+        </h1>
       </else>
     </header>
 
     <section class="content-body">
       <p>
-        <if test="&@children">Unterkategorien:
+        <if test="&@children"><t key="mercator.subcategories" />:
           <repeat with="&@children">
             <a href="/consumables/#{this.IDCATEGORY}/category"><view:DESCRIPTION/></a>
             <%= last_item? ? "" : " - " %>
@@ -41,10 +48,10 @@
       </if>
       <else>
         <if test="&@category.parent">
-          <p>keine Produkte lieferbar</p>
+          <p><t key="mercator.no_products_available" /></p>
         </if>
         <else>
-          <p>Bitte wählen Sie eine Kategorie</p>
+          <p><t key="mercator.select_a_category" /></p>
         </else>
       </else>
     </section>

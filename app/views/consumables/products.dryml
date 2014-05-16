@@ -5,10 +5,10 @@
   <content:>
     <header class="content-header">
       <if test="&@printer_description">
-        <h1>Verbrauchsmaterialien <view with="&@printer_description" /></h1>
+        <h1><t key="mercator.consumeables" /> <view with="&@printer_description" /></h1>
       </if>
       <else>
-        <h2>Kein Produkt mit dieser Bezeichnung gefunden</h2>
+        <h2><t key="mercator.no_product_with_this_name" /></h2>
       </else>
     </header>
 
@@ -23,11 +23,15 @@
         <% end %>
       </if>
       <else>
-        <p>keine Produkte lieferbar</p>
+        <p><t key="mercator.no_products_available" /></p>
       </else>
     </section>
 
-    <p><a href="/consumables" class ="btn btn-primary">Zur Suche</a></p>
+    <p>
+      <a href="/consumables" class ="btn btn-primary">
+        <t key="mercator.goto_search" />
+      </a>
+    </p>
   </content:>
 
 </page>
