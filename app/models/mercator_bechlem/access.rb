@@ -30,13 +30,17 @@ module MercatorBechlem
     def self.delete_first_lines
       TABLES.each do |table|
         filename = DESTINATION.join(table + '.CSV')
-        File.open(filename) do |f|
-          f.readline
-          File.open(filename.to_s + ".tmp", 'w') do |f2|
-            f2 << f.read
+        begin
+          File.open(filename) do |f|
+            f.readline
+            File.open(filename.to_s + ".tmp", 'w') do |f2|
+              f2 << f.read
+            end
           end
+          FileUtils.mv(filename.to_s + ".tmp", filename)
+        rescue EOFError
+          # If the file is empty, no action is needed.
         end
-        FileUtils.mv(filename.to_s + ".tmp", filename)
       end
     end
   end
