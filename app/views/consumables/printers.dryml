@@ -51,7 +51,7 @@
         <autocomplete:printer name="printer"
                               with="&MercatorBechlem::VitemPrinter.new()"
                               source="&@printer_names"/>
-        <submit label="&t(hobo.live_search.label)"/>
+        <submit label="&t('hobo.live_search.label')"/>
       </form>
 
       <p>

@@ -1,5 +1,4 @@
 Mercator::Application.routes.draw do
-  get 'consumables', to: redirect('/consumables/All/printers/'), :as => 'consumables'
   get 'consumables/:id/products/' => "consumables#products", :as => 'products_consumables'
   post 'consumables/products/' => "consumables#products"
   get 'consumables/:id/printers/' => "consumables#printers", :as => 'printers_consumables'
