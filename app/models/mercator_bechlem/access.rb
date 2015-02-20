@@ -6,9 +6,9 @@ module MercatorBechlem
 
     attr_accessor(:user, :password, :vendor, :lang, :typ, :base_uri, :full_index_url, :daily_index_url, :open_uri_options)
 
-    USER = "MB_Daten_Ivellio-Vellin"
-    PASSWORD = "247r9fhs47hefe4"
-    URL = "ftp://" + USER + ":" + PASSWORD + "@ww2.kompashop.de/Ivellio_Vellin.zip"
+    USER = CONFIG[:bechlem_user]
+    PASSWORD = CONFIG[:bechlem_password]
+    URL = "ftp://" + USER + ":" + PASSWORD + "@ww2.kompashop.de/" + CONFIG[:bechlem_filename]
     DESTINATION = Rails.root.join("vendor","bechlem")
     TABLES = ["BRAND", "DESCRIPTOR", "ITEM", "IDENTIFIER", "QUALIFIER", "ITEM2ITEM"]
 

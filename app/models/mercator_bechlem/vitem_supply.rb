@@ -6,7 +6,7 @@ module MercatorBechlem
 
     def self.for_category_id(category_id )
       cat_id = category_id.to_s.gsub("0", "")
-      self.where(brand: "HP").where("idCategory like ?", "#{cat_id}%").order(artnr: :asc)
+      self.where(brand: CONFIG[:bechlem_brand]).where("idCategory like ?", "#{cat_id}%").order(artnr: :asc)
     end
 
     # --- Instance Methods --- #
