@@ -1,6 +1,5 @@
 namespace :bechlem do
-  # starten als: 'bundle exec rake bechlem:import'
-  # in Produktivumgebungen: 'bundle exec rake bechlem:import RAILS_ENV=production'
+  # starten als: 'bundle exec rake bechlem:import RAILS_ENV=production'
   desc 'Import crosselling data from Bechlem'
   task :import => :environment do
 
