@@ -23,20 +23,20 @@
         </if>
       </p>
 
-      <p>
-        <repeat with="&@printer_series_names">
-          <if test="&@printerserie == this">
-            <view with="&this" />
+      <div class="row">
+        <div repeat="&@printer_series_names" class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+          <if>
+            <if test="&@printerserie == this">
+              <view with="&this" />
+            </if>
+            <else>
+              <a href="/consumables/#{u this}/printers">
+                <view/>
+              </a>
+            </else>
           </if>
-          <else>
-            <a href="/consumables/#{u this}/printers">
-              <view/>
-            </a>
-          </else>
-
-          <%= last_item? ? "" : " - "%>
-        </repeat>
-      </p>
+        </div>
+      </div>
 
       <if test="&@printers">
         <h2>
@@ -54,18 +54,15 @@
         <submit label="&t('hobo.live_search.label')"/>
       </form>
 
-      <p>
-
-        <repeat with="&@printers">
+      <div class="row">
+        <div repeat="&@printers" class="col-lg-3 col-md-4 col-sm-5">
           <span class="underline">
             <a href="/consumables/#{this.IDITEM}/products">
               <view:DESCRIPTION />
             </a>
           </span>
-          <%= last_item? ? "" : " - "%>
-        </repeat>
-
-      </p>
+        </div>
+      </div>
     </section>
   </content:>
 </page>
