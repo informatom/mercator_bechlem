@@ -54,17 +54,7 @@
         <submit label="&t('hobo.live_search.label')"/>
       </form>
 
-      <div class="row">
-        <div repeat="&@printers" class="col-lg-3 col-md-4 col-sm-5">
-          <if>
-            <span class="underline">
-              <a href="/consumables/#{this.IDITEM}/products">
-                <view:DESCRIPTION />
-              </a>
-            </span>
-          </if>
-        </div>
-      </div>
+
     </section>
   </content:>
 </page>
