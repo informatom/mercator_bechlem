@@ -14,6 +14,16 @@
         <t key="mercator.consumeable_search_help" />
       </p>
 
+      <form action="/consumables/products" method="post">
+        <h3>
+          <t key="mercator.identifier" />
+        </h3>
+        <autocomplete:printer name="printer"
+                              with="&MercatorBechlem::VitemPrinter.new()"
+                              source="&@printer_names"/>
+        <submit label="&t('hobo.live_search.label')"/>
+      </form>
+
       <h2><t key="mercator.printer_series" /></h2>
       <p>
         <if test="&@printerserie != 'All' ">
@@ -42,16 +52,6 @@
         <h2>
           <t key="mercator.printer" />
         </h2>
-
-        <form action="/consumables/products" method="post">
-          <h3>
-            <t key="mercator.identifier" />
-          </h3>
-          <autocomplete:printer name="printer"
-                                with="&MercatorBechlem::VitemPrinter.new()"
-                                source="&@printer_names"/>
-          <submit label="&t('hobo.live_search.label')"/>
-        </form>
 
         <div class="row">
           <div repeat="&@printers" class="col-lg-3 col-md-4 col-sm-5">
