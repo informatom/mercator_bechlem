@@ -4,6 +4,14 @@
 
   <content:>
     <header class="content-header">
+      <h4>
+        <a href="&categories_path"><t key="mercator.overview"/></a> &gt;
+        <a href="/consumables/All/printers/"><t key="mercator.consumeables" /></a>
+        <if test="&@printerserie != 'All'">
+          &gt; <a href="/consumables/#{@printerserie}/printers/"><view with="&@printerserie" /></a>
+        </if>
+      </h4>
+
       <h1>
         <t key="mercator.consumeables" /> HP <t key="mercator.printer" />
       </h1>

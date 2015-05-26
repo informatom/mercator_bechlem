@@ -8,11 +8,12 @@ class ConsumablesController < ApplicationController
 
     if @printer
       icecat_products = MercatorBechlem::Vitem2item.where(IDITEM: @printer )
-      @printer_description = MercatorBechlem::VitemPrinter.where(IDITEM: @printer).first.DESCRIPTION
+      @printer_description = MercatorBechlem::VitemPrinter.find_by(IDITEM: @printer).DESCRIPTION
       alternative_numbers = icecat_products.collect { |product| "#{product.ARTNR.gsub("\s", '')}" }.uniq
                                                               # gsub removes whitespace characters, compact removes nil elements
       @products = Inventory.where(alternative_number: alternative_numbers).*.product.uniq
       @active_products = @products.find_all{|product| product.state == "active" }
+      @printerseries = MercatorBechlem::VitemPrinter.find_by(IDITEM: params[:id]).PRINTERSERIES
     end
   end
 
