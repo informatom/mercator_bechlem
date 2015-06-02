@@ -1,7 +1,7 @@
 module MercatorBechlem
   class Vdescriptor < Base
 
-    self.table_name = "vdescriptor"
+    self.table_name = "VDESCRIPTOR"
     self.primary_key = "IDITEM"
 
     # --- Instance Methods --- #

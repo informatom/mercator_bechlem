@@ -1,7 +1,7 @@
 module MercatorBechlem
   class Videntifier < Base
 
-    self.table_name = "videntifier"
+    self.table_name = "VIDENTIFIER"
     self.primary_key = "IDITEM"
 
     # --- Instance Methods --- #

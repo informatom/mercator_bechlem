@@ -1,7 +1,7 @@
 module MercatorBechlem
   class Vbrand < Base
 
-    self.table_name = "vbrand"
+    self.table_name = "VBRAND"
     self.primary_key = "IDBRAND"
 
     # --- Instance Methods --- #
