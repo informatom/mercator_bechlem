@@ -4,9 +4,13 @@ module MercatorBechlem
     self.table_name = "VCATEGORY"
     self.primary_key = "IDCATEGORY"
 
-    def self.ivellio_top_categories
+# --- Class Methods --- #
+
+    def self.top_categories
       Vcategory.find("145210000").children + Vcategory.find("145220000").children
     end
+
+# --- Instance Methods --- #
 
     def parent
       cat_id = self.IDCATEGORY.to_s
@@ -30,7 +34,6 @@ module MercatorBechlem
       [self.parent] + parent.parents.to_a if self.parent
     end
 
-    # --- Instance Methods --- #
     def readonly?  # prevents unintentional changes
       true
     end

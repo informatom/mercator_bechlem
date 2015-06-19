@@ -17,6 +17,7 @@ class ConsumablesController < ApplicationController
     end
   end
 
+
   def printers
     @printerserie = params[:id]
 
@@ -33,18 +34,20 @@ class ConsumablesController < ApplicationController
     else
       @printer_names = MercatorBechlem::VitemPrinter.where(brand: "HP", printerseries: @printerserie)
                                                     .order(DESCRIPTION: :asc).*
-                                                    .DESCRIPTION.uniq
+                                                    .DESCRIPTION
+                                                    .uniq
       @printers = MercatorBechlem::VitemPrinter.where(brand: "HP", printerseries: @printerserie)
                                                .select("CATEGORY, BRAND, DESCRIPTION, IDITEM")
                                                .order(DESCRIPTION: :asc)
     end
   end
 
+
   def category
     category_id = (params[:id] == "All") ? "145200000" : params[:id]
     @category = MercatorBechlem::Vcategory.where(IDCATEGORY: category_id).first
     @ancestors = try_to { @category.ancestors }
-    @children = @category ? @category.children : MercatorBechlem::Vcategory.ivellio_top_categories
+    @children = @category ? @category.children : MercatorBechlem::Vcategory.top_categories
 
     @printers = MercatorBechlem::VitemSupply.for_category_id(params[:id])
 

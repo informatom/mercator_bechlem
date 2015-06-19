@@ -15,7 +15,6 @@ module MercatorBechlem
     # --- Class Methods --- #
 
     def self.download_index
-
       io = open( URL, {"Accept-Encoding" => "gzip"})
 
       Zip::File.open(io) do |zip_file|
