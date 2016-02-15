@@ -29,7 +29,7 @@
 
     <section class="content-body">
       <p>
-        <if test="&@children"><t key="mercator.subcategories" />:
+        <if test="&@children.any?"><t key="mercator.subcategories" />:
           <repeat with="&@children">
             <a href="/consumables/#{this.IDCATEGORY}/category"><view:DESCRIPTION/></a>
             <%= last_item? ? "" : " - " %>
@@ -37,7 +37,7 @@
         </if>
       </p>
 
-      <if test="&@active_products">
+      <if test="&@active_products.any?">
         <%= @active_products.in_groups_of(2) do |group| %>
           <div class="row-fluid">
               <div repeat="&group" class="span6">
