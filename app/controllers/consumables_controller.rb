@@ -31,6 +31,7 @@ class ConsumablesController < ApplicationController
                                                     .order(DESCRIPTION: :asc).*
                                                     .DESCRIPTION
                                                     .uniq
+      @printers = []
     else
       @printer_names = MercatorBechlem::VitemPrinter.where(brand: "HP", printerseries: @printerserie)
                                                     .order(DESCRIPTION: :asc).*
