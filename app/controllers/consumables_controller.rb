@@ -13,7 +13,7 @@ class ConsumablesController < ApplicationController
                                                               # gsub removes whitespace characters, compact removes nil elements
       @products = Inventory.where(alternative_number: alternative_numbers).*.product.uniq
       @active_products = @products.find_all{|product| product.state == "active" }
-      @printerseries = MercatorBechlem::VitemPrinter.find_by(IDITEM: @printer).PRINTERSERIES
+      @printerseries = MercatorBechlem::VitemPrinter.find_by(IDITEM: @printer).try(:PRINTERSERIES)
     end
   end
 
